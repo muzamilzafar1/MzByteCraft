@@ -107,7 +107,7 @@ body {
 .sidebar-right {
     position: fixed;
     right: 0;
-    top: 20%;
+    top: 50%;
     transform: translateY(-50%);
     width: 60px;
     display: flex;
@@ -1352,44 +1352,3 @@ body {
   transform: scale(1.1); /* Slightly enlarge on hover */
 }
 
-/* --- Floating Big Shield --- */
-.floating-big-shield {
-  position: fixed;
-  right: 0px; /* Full right, touching the border */
-  bottom: 0px; /* Full bottom, touching the border, looks like it's on the ground */
-  height: 60vh; /* Increased size - 60% of viewport height */
-  width: auto; /* Maintain aspect ratio */
-  max-width: 50vw; /* Prevent it from being too wide on large screens */
-  border-radius: 0;
-  /* Removed box-shadow here to make it blend more with the "ground" idea */
-  z-index: 9998; /* Below WhatsApp button */
-  object-fit: contain;
-  transform-origin: bottom right; /* Rotate around its bottom-right corner */
-  transform: perspective(1000px) rotateX(10deg) rotateY(-5deg); /* Subtle 3D perspective to look like it's on the ground */
-  /* If your shield image has a background that needs to be removed, this CSS won't do it.
-     You'll need to edit the 'shield.jpeg' file to be a transparent PNG or WebP. */
-  transition: transform .3s ease-in-out; /* Smooth transition for perspective */
-}
-
-/* Optional: Slight hover effect for the shield too */
-.floating-big-shield:hover {
-  transform: perspective(1000px) rotateX(8deg) rotateY(-3deg) scale(1.01); /* Subtle lift/shift */
-}
-
-/* Responsive adjustment for small mobile screens */
-@media (max-width: 600px) {
-  .whatsapp-float {
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
-    bottom: 15px;
-    right: 15px;
-  }
-  .floating-big-shield {
-    height: 45vh; /* Adjust height for smaller screens */
-    right: 0px;
-    bottom: 0px;
-    max-width: 70vw; /* Allow it to be wider on small screens */
-    transform: perspective(800px) rotateX(15deg) rotateY(-8deg); /* Adjust perspective for mobile */
-  }
-}
