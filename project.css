@@ -1,0 +1,173 @@
+/* all-projects.css */
+
+/* --- Import your root variables if not already globally available --- */
+/* If your :root variables are in style.css, you might not need this here.
+   Otherwise, copy them here or ensure style.css is loaded before this. */
+:root {
+    --bg-color: #2F4F4F;
+    --text-color: #F8F8F8;
+    --primary-accent: #CC5500;
+    --secondary-accent: #D4AF37;
+    --sidebar-bg: #36454F;
+    --muted-text-color: #A0A0A0;
+    --border-color: #2D3748;
+    --primary-dark-gray: var(--bg-color);
+    --secondary-dark-gray: var(--sidebar-bg);
+    --primary-text-light: var(--text-color);
+    --faded-text-gray: var(--muted-text-color);
+    --accent-burnt-orange: var(--primary-accent);
+    --secondary-text-gold: var(--secondary-accent);
+    --border-color-subtle: #4A5B64;
+}
+
+body {
+    font-family: Arial, sans-serif; /* Or your preferred font */
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Main Header Styles --- */
+.main-header {
+    background-color: var(--sidebar-bg); /* Darker background for header */
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.site-logo {
+    color: var(--primary-accent); /* Gold/Orange for logo */
+    font-size: 1.8em;
+    font-weight: bold;
+    text-decoration: none;
+    margin-right: 20px; /* Space between logo and nav */
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px; /* Space between nav items */
+}
+
+.main-nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: var(--primary-accent); /* Gold/Orange on hover */
+}
+
+/* --- All Projects Section Styles --- */
+.all-projects-section {
+    padding: 80px 0;
+    background: radial-gradient(circle at top left, rgba(47, 79, 79, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at bottom right, rgba(54, 69, 79, 0.3) 0%, transparent 50%),
+                var(--bg-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.all-projects-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.all-projects-header h1 {
+    font-size: 3.5em;
+    color: var(--primary-accent); /* Use primary accent for main heading */
+    margin-bottom: 15px;
+    line-height: 1.1;
+}
+
+.all-projects-header p {
+    font-size: 1.2em;
+    color: var(--muted-text-color);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Projects Grid - Using the same styles as your existing portfolio section */
+/* Ensure these are either in your global style.css or copied here if needed */
+/* .projects-grid, .project-item, .project-item img, .overlay, .overlay p, etc. */
+/* The existing CSS you provided for .projects-grid and .project-item will work here.
+   Just make sure it's loaded. */
+
+/* --- Footer Styles --- */
+.main-footer {
+    background-color: var(--sidebar-bg); /* Darker background for footer */
+    color: var(--muted-text-color);
+    padding: 40px 0;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+}
+
+.main-footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.main-footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+.social-links a {
+    margin: 0 10px;
+    display: inline-block;
+        color: var(--text-color);
+
+}
+.social-links a:hover {
+    color: var(--primary-accent); /* Gold/Orange on hover */
+
+}
+
+.social-links img:hover {
+    filter: invert(40%) sepia(90%) saturate(1000%) hue-rotate(350deg) brightness(100%); /* Gold/Orange tint on hover */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .main-header .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .site-logo {
+        margin-bottom: 15px;
+    }
+    .main-nav ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .all-projects-header h1 {
+        font-size: 2.5em;
+    }
+    .all-projects-header p {
+        font-size: 1em;
+    }
+    .projects-grid {
+        grid-template-columns: 1fr; /* Single column on small screens */
+    }
+}

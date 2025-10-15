@@ -1,0 +1,140 @@
+/* Color Scheme Variables (ensure these are defined globally or included where this CSS is used) */
+:root {
+  --primary-dark-gray: #2F4F4F; /* Dark Slate Gray */
+  --secondary-dark-gray: #36454F; /* Charcoal Gray */
+  --accent-burnt-orange: #CC5500; /* Burnt Orange */
+  --primary-text-light: #F8F8F8; /* Light Gray / Off-White */
+  --secondary-text-gold: #D4AF37; /* Muted Gold */
+  --faded-text-gray: #AAAAAA; /* For labels/descriptions */
+  --border-color-subtle: #4D6969; /* A slightly lighter version of primary-dark-gray for borders */
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  /* Using primary-dark-gray for body background, can use a subtle gradient if preferred */
+  background: var(--primary-dark-gray); /* Updated body background */
+  color: var(--primary-text-light); /* Updated body text color */
+  line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: transparent; /* Keep transparent for a modern look, or use a subtle dark color */
+}
+
+.navbar .logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--secondary-text-gold); /* Updated logo color to muted gold */
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+}
+
+.navbar ul li {
+  margin-left: 20px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: var(--primary-text-light); /* Updated link color */
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+  color: var(--accent-burnt-orange); /* Updated hover color for links */
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 60px 20px 30px;
+  background: var(--secondary-dark-gray); /* Using secondary heavy color for hero background */
+}
+
+.hero h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: var(--primary-text-light); /* Hero heading color */
+}
+
+.hero .breadcrumb {
+  font-size: 14px;
+  color: var(--faded-text-gray); /* Updated breadcrumb text color */
+}
+
+.hero .breadcrumb a {
+  color: var(--primary-text-light); /* Updated breadcrumb link color */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.hero .breadcrumb a:hover {
+  color: var(--accent-burnt-orange); /* Updated breadcrumb link hover color */
+}
+
+/* FAQ */
+.faq-section {
+  display: flex;
+  justify-content: center;
+  padding: 30px 20px 60px;
+  background: var(--primary-dark-gray); /* Ensure consistent section background */
+}
+
+.faq-container {
+  max-width: 800px;
+  width: 100%;
+}
+
+.faq-item {
+  background: var(--secondary-dark-gray); /* FAQ item background to secondary heavy color */
+  margin-bottom: 10px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border-color-subtle); /* Subtle border for definition */
+}
+
+.faq-question {
+  width: 100%;
+  padding: 15px;
+  text-align: left;
+  border: none;
+  outline: none;
+  background: var(--secondary-dark-gray); /* FAQ question background */
+  color: var(--primary-text-light); /* FAQ question text color */
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.faq-question:hover {
+  background: #4A5A65; /* A slightly lighter shade of secondary-dark-gray for hover */
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  background: var(--primary-dark-gray); /* FAQ answer background to primary heavy color */
+  padding: 0 15px;
+  transition: max-height 0.3s ease;
+}
+
+.faq-answer p {
+  color: var(--faded-text-gray); /* FAQ answer text color */
+  padding: 15px 0;
+}
