@@ -153,3 +153,22 @@ function openModal(imgElement) {
 function closeModal() {
   document.getElementById("imgModal").style.display = "none";
 }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    menuToggle.addEventListener('click', function () {
+      mobileNav.classList.toggle('active');
+      menuToggle.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', function () {
+        mobileNav.classList.remove('active');
+        menuToggle.classList.remove('active');
+      });
+    });
+  });
