@@ -1,86 +1,54 @@
-document.addEventListener('DOMContentLoaded', function() {
-    
-   ;
+document.addEventListener('DOMContentLoaded', function () {
 
-    // Sidebar Active Link Logic
-    const sections = document.querySelectorAll('section');
-    const navLi = document.querySelectorAll('.sidebar-left ul li a');
-
-    window.addEventListener('scroll', ()=> {
-        let current = '';
-        sections.forEach( section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if(pageYOffset >= (sectionTop - sectionHeight / 3)){
-                current = section.getAttribute('id');
-            }
-        })
-
-        navLi.forEach( a => {
-            a.classList.remove('active');
-            if(a.getAttribute('href').includes(current)){
-                a.classList.add('active');
-            }
-        })
+  // Typing animation — only runs where #typing-animation exists and Typed.js is loaded
+  const typingTarget = document.getElementById('typing-animation');
+  if (typingTarget && typeof Typed !== 'undefined') {
+    new Typed('#typing-animation', {
+      strings: ["Web Developer", "WordPress Developer", "Freelancer"],
+      typeSpeed: 100,
+      backSpeed: 50,
+      backDelay: 2000,
+      loop: true
     });
-});
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // Typing Animation using Typed.js
-    var options = {
-        strings: ["Web Developer", "WordPress Developer", "Freelancer"],
-        typeSpeed: 100,
-        backSpeed: 50,
-        backDelay: 2000,
-        loop: true
-    };
-    var typed = new Typed('#typing-animation', options);
+  }
 
-    // Sidebar Active Link Logic
-    const sections = document.querySelectorAll('section');
-    const navLi = document.querySelectorAll('.sidebar-left ul li a');
+  // Sidebar active-link logic on scroll
+  const sections = document.querySelectorAll('section');
+  const navLi = document.querySelectorAll('.sidebar-left ul li a');
 
-    window.addEventListener('scroll', ()=> {
-        let current = '';
-        sections.forEach( section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if(pageYOffset >= (sectionTop - sectionHeight / 2)){ // Adjusted threshold
-                current = section.getAttribute('id');
-            }
-        })
-
-        navLi.forEach( a => {
-            a.classList.remove('active');
-            if(a.getAttribute('href').includes(current)){
-                a.classList.add('active');
-            }
-        })
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (pageYOffset >= (sectionTop - sectionHeight / 2)) {
+        current = section.getAttribute('id');
+      }
     });
 
-    // --- Scroll Animation Logic using Intersection Observer ---
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            // When the element is in view
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, {
-        threshold: 0.15 // Trigger when 15% of the element is visible
+    navLi.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href').includes(current)) {
+        a.classList.add('active');
+      }
     });
+  });
 
-    // Tell the observer to watch the services section
-    const servicesSection = document.querySelector('.services-section');
-    if (servicesSection) {
-         observer.observe(servicesSection);
-    }
-    
-});
+  // Scroll-reveal animation for the services section
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
 
-// script.js (You can leave this empty for now, or add more complex interactions later)
+  const servicesSection = document.querySelector('.services-section');
+  if (servicesSection) {
+    observer.observe(servicesSection);
+  }
 
-document.addEventListener("DOMContentLoaded", () => {
+  // Resume tabs
   const tabs = document.querySelectorAll(".tab");
   const contents = document.querySelectorAll(".tab-content");
 
@@ -93,82 +61,105 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById(tab.dataset.tab).classList.add("active");
     });
   });
-});
-document.addEventListener("DOMContentLoaded", () => {
+
+  // Animated skill bars
   document.querySelectorAll(".skill-bar div").forEach(bar => {
-    let percent = bar.getAttribute("data-percent");
+    const percent = bar.getAttribute("data-percent");
     setTimeout(() => {
       bar.style.width = percent + "%";
     }, 500);
   });
-});
-let currentIndex = 0;
-const testimonials = document.querySelectorAll('.testimonial');
 
-function showSlide(index) {
-  testimonials.forEach((testimonial, i) => {
-    testimonial.classList.remove('active');
-    if (i === index) {
-      testimonial.classList.add('active');
-    }
+  // Testimonial slider
+  const testimonials = document.querySelectorAll('.testimonial');
+  let currentIndex = 0;
+
+  function showSlide(index) {
+    testimonials.forEach((testimonial, i) => {
+      testimonial.classList.toggle('active', i === index);
+    });
+  }
+
+  function changeSlide(direction) {
+    currentIndex = (currentIndex + direction + testimonials.length) % testimonials.length;
+    showSlide(currentIndex);
+  }
+  window.changeSlide = changeSlide; // exposed globally for the onclick="changeSlide(...)" buttons
+
+  if (testimonials.length > 0) {
+    setInterval(() => changeSlide(1), 5000);
+  }
+
+  // FAQ accordion
+  document.querySelectorAll(".faq-question").forEach(question => {
+    question.addEventListener("click", () => {
+      const parent = question.parentElement;
+      parent.classList.toggle("active");
+
+      const answer = question.nextElementSibling;
+      answer.style.maxHeight = parent.classList.contains("active")
+        ? answer.scrollHeight + "px"
+        : null;
+    });
   });
-}
 
-function changeSlide(direction) {
-  currentIndex += direction;
-  if (currentIndex < 0) currentIndex = testimonials.length - 1;
-  if (currentIndex >= testimonials.length) currentIndex = 0;
-  showSlide(currentIndex);
-}
+  // Mobile menu toggle
+  const menuToggle = document.querySelector('.menu-toggle');
+  const mobileNav = document.querySelector('.mobile-nav');
 
-// Auto Slide
-setInterval(() => {
-  changeSlide(1);
-}, 5000);
-// FAQ Toggle
-const faqQuestions = document.querySelectorAll(".faq-question");
-
-faqQuestions.forEach(question => {
-  question.addEventListener("click", () => {
-    const parent = question.parentElement;
-    parent.classList.toggle("active");
-
-    const answer = question.nextElementSibling;
-    if (parent.classList.contains("active")) {
-      answer.style.maxHeight = answer.scrollHeight + "px";
-    } else {
-      answer.style.maxHeight = null;
-    }
-  });
-});
-// Open image in modal
-function openModal(imgElement) {
-  var modal = document.getElementById("imgModal");
-  var modalImg = document.getElementById("modalImg");
-  modal.style.display = "block";
-  modalImg.src = imgElement.src;
-}
-
-// Close modal
-function closeModal() {
-  document.getElementById("imgModal").style.display = "none";
-}
-
-  document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const mobileNav = document.querySelector('.mobile-nav');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-
+  if (menuToggle && mobileNav) {
     menuToggle.addEventListener('click', function () {
       mobileNav.classList.toggle('active');
       menuToggle.classList.toggle('active');
     });
 
-    // Close menu when a link is clicked
-    mobileNavLinks.forEach(link => {
+    mobileNav.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', function () {
         mobileNav.classList.remove('active');
         menuToggle.classList.remove('active');
       });
     });
-  });
+  }
+
+  // WhatsApp chat widget
+  const waPhone = "923440447474";
+  const waToggle = document.getElementById('waToggle');
+  const waPopup = document.getElementById('waPopup');
+  const waClose = document.getElementById('waClose');
+  const waCta = document.getElementById('waCta');
+
+  function openWhatsApp(message) {
+    window.open(`https://wa.me/${waPhone}?text=${encodeURIComponent(message)}`, '_blank');
+  }
+
+  if (waToggle && waPopup) {
+    waToggle.addEventListener('click', () => {
+      waPopup.classList.toggle('active');
+    });
+
+    if (waClose) {
+      waClose.addEventListener('click', () => waPopup.classList.remove('active'));
+    }
+
+    document.querySelectorAll('.wa-chip').forEach(chip => {
+      chip.addEventListener('click', () => openWhatsApp(chip.dataset.msg));
+    });
+
+    if (waCta) {
+      waCta.addEventListener('click', () => openWhatsApp("Hi, I'd like a free consultation."));
+    }
+  }
+
+});
+
+// Certificate image modal — called via inline onclick, so kept global
+function openModal(imgElement) {
+  const modal = document.getElementById("imgModal");
+  const modalImg = document.getElementById("modalImg");
+  modal.style.display = "block";
+  modalImg.src = imgElement.src;
+}
+
+function closeModal() {
+  document.getElementById("imgModal").style.display = "none";
+}
