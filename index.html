@@ -256,7 +256,7 @@ WordPress                </p>
         <div class="about-image">
           <div class="circle-bg">
             <img
-              src="DP.png"
+              src="aboutusupdatephoto.png"
               alt="Muzamil Zafar"
             />
           </div>
@@ -660,7 +660,7 @@ WordPress                </p>
             <div class="info-item">
               <h4>📧 Email</h4>
               <p>
-                <a href="mailto:mzbytecraft@gmail.com">mzbytecraft@gmail.com</a>
+                <a href="mailto:wp.developer.muzamil@gmail.com">wp.developer.muzamil@gmail.com</a>
               </p>
             </div>
             <div class="info-item">
@@ -683,10 +683,53 @@ WordPress                </p>
       </div>
     </section>
 
-    <!-- Floating WhatsApp Icon -->
-    <a href="https://wa.me/923440447474" class="whatsapp-float">
-      <i class="fab fa-whatsapp"></i>
-    </a>
+    <!-- Floating WhatsApp Chat Widget -->
+    <div class="wa-widget">
+      <div class="wa-popup" id="waPopup">
+        <div class="wa-popup-header">
+          <div class="wa-popup-brand">
+            <img src="mzlogoupdate.png" alt="MzByteCraft" />
+            <div>
+              <h4>MzByteCraft</h4>
+              <p>Design. Build. Deliver.</p>
+            </div>
+          </div>
+          <button class="wa-close" id="waClose" aria-label="Close chat">&times;</button>
+        </div>
+
+        <div class="wa-agent">
+          <div class="wa-agent-avatar">MZ</div>
+          <div>
+            <h4>Muzamil Zafar</h4>
+            <p><span class="wa-dot"></span> Online now</p>
+          </div>
+        </div>
+
+        <div class="wa-body">
+          <span class="wa-day-tag">Today</span>
+          <div class="wa-message">
+            <span class="wa-message-sender">Muzamil Zafar</span>
+            <p>👋 Hello! Welcome to <strong>MzByteCraft</strong>. How can I help you today?</p>
+            <span class="wa-message-time">Just now</span>
+          </div>
+        </div>
+
+        <div class="wa-quick-replies">
+          <button class="wa-chip" data-msg="Hi, I want to know about your pricing.">💰 Pricing</button>
+          <button class="wa-chip" data-msg="Hi, I want to know about your services.">📦 Services</button>
+          <button class="wa-chip" data-msg="Hi, I want to know your project timings.">🕐 Timings</button>
+        </div>
+
+        <button class="wa-cta" id="waCta">
+          <i class="fab fa-whatsapp"></i> Get Free Consultation
+        </button>
+        <p class="wa-footer-note">🔒 End-to-end encrypted by WhatsApp</p>
+      </div>
+
+      <button class="whatsapp-float" id="waToggle" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </button>
+    </div>
 
     <!-- Typed.js for Typing Animation -->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
