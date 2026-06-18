@@ -1,138 +1,140 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FAQ - Frequently Asked Questions</title>
-  <link rel="stylesheet" href="faq.css">
-</head>
-<body>
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="logo">Muzamil.</div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-      </ul>
-    </nav>
-  </header>
+/* Color Scheme Variables (matched to the main site's slate & teal theme) */
+:root {
+  --primary-dark-gray: #111827; /* Deep Slate - main background */
+  --secondary-dark-gray: #1F2937; /* Slightly Lighter Slate - for layering */
+  --accent-burnt-orange: #0D9488; /* Teal - primary accent */
+  --primary-text-light: #F3F4F6; /* Soft Off-White - main text */
+  --secondary-text-gold: #2DD4BF; /* Lighter Teal - secondary accent */
+  --faded-text-gray: #9CA3AF; /* Muted Gray for labels/descriptions */
+  --border-color-subtle: #4B5563; /* Subtle border on dark backgrounds */
+}
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1>Frequently Asked Questions</h1>
-    <p class="breadcrumb"><a href="#">Home</a> > Frequently Asked Questions</p>
-  </section>
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  <!-- FAQ Section -->
-  <section class="faq-section">
-    <div class="faq-container">
-      
-      <!-- Q1 -->
-      <div class="faq-item">
-        <button class="faq-question">What services do you offer as a WordPress Developer?</button>
-        <div class="faq-answer">
-          <p>
-            I offer custom WordPress website development, WooCommerce store setup, responsive design, 
-            SEO optimization, speed enhancements, theme and plugin customization, and ongoing website maintenance. 
-            Whether it’s a business site, blog, or e-commerce store, I deliver tailored solutions.
-          </p>
-        </div>
-      </div>
+body {
+  font-family: Arial, sans-serif;
+  /* Using primary-dark-gray for body background, can use a subtle gradient if preferred */
+  background: var(--primary-dark-gray); /* Updated body background */
+  color: var(--primary-text-light); /* Updated body text color */
+  line-height: 1.6;
+}
 
-      <!-- Q2 -->
-      <div class="faq-item">
-        <button class="faq-question">How long does it take to complete a website project?</button>
-        <div class="faq-answer">
-          <p>
-            It depends on the complexity of the project. Small business websites usually take 2-3 weeks, 
-            while larger e-commerce or custom projects may take 4-6 weeks.
-          </p>
-        </div>
-      </div>
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: transparent; /* Keep transparent for a modern look, or use a subtle dark color */
+}
 
-      <!-- Q3 -->
-      <div class="faq-item">
-        <button class="faq-question">Do you provide support after the website is completed?</button>
-        <div class="faq-answer">
-          <p>
-            Yes, I provide post-launch support and ongoing maintenance packages to ensure your site remains updated, secure, and optimized.
-          </p>
-        </div>
-      </div>
+.navbar .logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--secondary-text-gold); /* Updated logo color to teal accent */
+}
 
-      <!-- Q4 -->
-      <div class="faq-item">
-        <button class="faq-question">Will my website be mobile-friendly and fast?</button>
-        <div class="faq-answer">
-          <p>
-            Absolutely! All my websites are fully responsive and optimized for speed to give the best user experience.
-          </p>
-        </div>
-      </div>
+.navbar ul {
+  list-style: none;
+  display: flex;
+}
 
-      <!-- Q5 -->
-      <div class="faq-item">
-        <button class="faq-question">Can you help me redesign my existing website?</button>
-        <div class="faq-answer">
-          <p>
-            Yes, I can redesign your existing website with a modern look, better performance, and improved user experience.
-          </p>
-        </div>
-      </div>
+.navbar ul li {
+  margin-left: 20px;
+}
 
-      <!-- Q6 -->
-      <div class="faq-item">
-        <button class="faq-question">How do I get started working with you?</button>
-        <div class="faq-answer">
-          <p>
-            You can get started by contacting me with your project details. I’ll provide a consultation and create a plan that fits your goals and budget.
-          </p>
-        </div>
-      </div>
+.navbar ul li a {
+  text-decoration: none;
+  color: var(--primary-text-light); /* Updated link color */
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
 
-      <!-- Q7 -->
-      <div class="faq-item">
-        <button class="faq-question">Do you work with international clients?</button>
-        <div class="faq-answer">
-          <p>
-            Yes, I work with clients worldwide and have experience managing projects remotely with effective communication tools.
-          </p>
-        </div>
-      </div>
+.navbar ul li a:hover {
+  color: var(--accent-burnt-orange); /* Updated hover color for links */
+}
 
-      <!-- Q8 -->
-      <div class="faq-item">
-        <button class="faq-question">Do you offer website SEO services?</button>
-        <div class="faq-answer">
-          <p>
-            Yes, I provide on-page SEO optimization to help your website rank better on search engines and attract more visitors.
-          </p>
-        </div>
-      </div>
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 60px 20px 30px;
+  background: var(--secondary-dark-gray); /* Using secondary heavy color for hero background */
+}
 
-      <!-- Q9 -->
-      <div class="faq-item">
-        <button class="faq-question">Do you provide website training after launch?</button>
-        <div class="faq-answer">
-          <p>
-            Yes, I provide training sessions so you can easily manage your website content and updates after launch.
-          </p>
-        </div>
-      </div>
+.hero h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: var(--primary-text-light); /* Hero heading color */
+}
 
-      <!-- Q10 -->
-      <div class="faq-item">
-        <button class="faq-question">Can you build a custom WooCommerce store?</button>
-        <div class="faq-answer">
-          <p>
-            Absolutely! I can build a fully functional WooCommerce store with custom features tailored to your products and business needs.
-          </p>
-        </div>
-      </div>
+.hero .breadcrumb {
+  font-size: 14px;
+  color: var(--faded-text-gray); /* Updated breadcrumb text color */
+}
 
-    </div>
-  </section>
+.hero .breadcrumb a {
+  color: var(--primary-text-light); /* Updated breadcrumb link color */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+.hero .breadcrumb a:hover {
+  color: var(--accent-burnt-orange); /* Updated breadcrumb link hover color */
+}
+
+/* FAQ */
+.faq-section {
+  display: flex;
+  justify-content: center;
+  padding: 30px 20px 60px;
+  background: var(--primary-dark-gray); /* Ensure consistent section background */
+}
+
+.faq-container {
+  max-width: 800px;
+  width: 100%;
+}
+
+.faq-item {
+  background: var(--secondary-dark-gray); /* FAQ item background to secondary heavy color */
+  margin-bottom: 10px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border-color-subtle); /* Subtle border for definition */
+}
+
+.faq-question {
+  width: 100%;
+  padding: 15px;
+  text-align: left;
+  border: none;
+  outline: none;
+  background: var(--secondary-dark-gray); /* FAQ question background */
+  color: var(--primary-text-light); /* FAQ question text color */
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.faq-question:hover {
+  background: #2E3A4B; /* A slightly lighter shade of secondary-dark-gray for hover */
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  background: var(--primary-dark-gray); /* FAQ answer background to primary heavy color */
+  padding: 0 15px;
+  transition: max-height 0.3s ease;
+}
+
+.faq-answer p {
+  color: var(--faded-text-gray); /* FAQ answer text color */
+  padding: 15px 0;
+}
