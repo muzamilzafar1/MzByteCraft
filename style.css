@@ -297,25 +297,6 @@ body {
     transform: translateY(-3px);
 }
 
-/* --- WHATSAPP FLOAT ICON (Original location) --- */
-.whatsapp-float {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    background-color: var(--whatsapp-color);
-    color: white;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    text-decoration: none;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    z-index: 100;
-}
-
 /* --- Responsive Styles (Original breakpoint) --- */
 @media (max-width: 768px) {
     body { padding-left: 0; padding-right: 0; }
@@ -1699,28 +1680,274 @@ body {
 .btn-submit:hover {
   opacity: 0.9;
 }
-/* --- Floating WhatsApp Icon (Adjusted for responsiveness) --- */
-.whatsapp-float {
+/* --- WhatsApp Chat Widget --- */
+.wa-widget {
   position: fixed;
-  width: 60px;
-  height: 60px;
   bottom: 20px;
   right: 20px;
-  background-color: #25d366;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
+}
+
+.whatsapp-float {
+  width: 60px;
+  height: 60px;
+  background-color: var(--whatsapp-color);
   color: #FFF;
+  border: none;
   border-radius: 50px;
-  text-align: center;
   font-size: 28px;
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
-  z-index: 10000;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   transition: transform 0.3s ease-in-out;
+  flex-shrink: 0;
 }
 
 .whatsapp-float:hover {
   transform: scale(1.1);
+}
+
+.wa-popup {
+  width: 320px;
+  max-width: calc(100vw - 40px);
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
+  transform: translateY(20px) scale(0.95);
+  transform-origin: bottom right;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+}
+
+.wa-popup.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.wa-popup-header,
+.wa-agent {
+  background: #0B4D3B;
+  color: #fff;
+}
+
+.wa-popup-header {
+  padding: 18px 18px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.wa-popup-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.wa-popup-brand img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.wa-popup-brand h4 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.wa-popup-brand p {
+  margin: 2px 0 0;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.wa-close {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.wa-agent {
+  padding: 0 18px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.wa-agent-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.wa-agent h4 {
+  margin: 0;
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.wa-agent p {
+  margin: 2px 0 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.78rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.wa-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ADE80;
+  display: inline-block;
+}
+
+.wa-body {
+  background: #ECE5DD;
+  padding: 18px;
+}
+
+.wa-day-tag {
+  display: block;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.06);
+  color: #555;
+  font-size: 0.72rem;
+  padding: 4px 10px;
+  border-radius: 10px;
+  width: fit-content;
+  margin: 0 auto 14px;
+}
+
+.wa-message {
+  background: #fff;
+  border-radius: 10px;
+  padding: 12px 14px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.wa-message-sender {
+  display: block;
+  color: #0B4D3B;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+
+.wa-message p {
+  margin: 0;
+  color: #222;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.wa-message-time {
+  display: block;
+  text-align: right;
+  color: #999;
+  font-size: 0.72rem;
+  margin-top: 6px;
+}
+
+.wa-quick-replies {
+  background: #f4f4f4;
+  padding: 14px 18px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.wa-chip {
+  flex: 1;
+  min-width: 90px;
+  background: #fff;
+  border: 1.5px solid var(--whatsapp-color);
+  color: #0B4D3B;
+  border-radius: 20px;
+  padding: 8px 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.2s ease;
+}
+
+.wa-chip:hover {
+  background: rgba(37, 211, 102, 0.12);
+}
+
+.wa-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 16px 18px 8px;
+  background: var(--whatsapp-color);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 14px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.wa-cta:hover {
+  background: #1FAE57;
+}
+
+.wa-cta i {
+  font-size: 1.2rem;
+}
+
+.wa-footer-note {
+  text-align: center;
+  color: #999;
+  font-size: 0.72rem;
+  padding-bottom: 16px;
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+  .wa-widget {
+    bottom: 15px;
+    right: 15px;
+  }
+  .wa-popup {
+    width: calc(100vw - 30px);
+  }
 }
 
 /* --- Floating Big Shield (Adjusted for responsiveness) --- */
@@ -1776,8 +2003,6 @@ body {
         width: 50px;
         height: 50px;
         font-size: 24px;
-        bottom: 15px;
-        right: 15px;
     }
 
     /* Contact Section Mobile Adjustments */
